@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Entry x:Name="CityEntry" Placeholder="Digite a cidade" />
+
+            <Button Text="Obter Localização" Clicked="Button_Clicked" />
+
+            <Label Text="Pesquisar por Data:" />
+            <DatePicker x:Name="DateEntry" />
+
+            <Button Text="Pesquisar" Clicked="SearchButton_Clicked" />
+
+            <!-- Cabeçalho da ListView -->
+            <Grid Padding="10" ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Data" FontAttributes="Bold" Grid.Column="0" />
+                <Label Text="Cidade" FontAttributes="Bold" Grid.Column="1" />
+                <Label Text="Temperatura" FontAttributes="Bold" Grid.Column="2" />
+                <Label Text="Previsão" FontAttributes="Bold" Grid.Column="3" />
+            </Grid>
+
+            <ListView x:Name="ForecastListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding CreatedDate}" Grid.Column="0" />
+                                <Label Text="{Binding Name}" Grid.Column="1" />
+                                <Label Text="{Binding Temp}" Grid.Column="2" />
+                                <Label Text="{Binding Weather}" Grid.Column="3" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
